@@ -1,0 +1,202 @@
+.login {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  height: 50%;
+}
+.company-logo {
+  width: 330px;
+}
+.line {
+  width: 220px;
+  height: 2px;
+  background-color: black;
+}
+.l_or_l {
+  width: 500px;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+/* -------signin--------- */
+
+.login .signin {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  transition: 0.5s;
+  height: 400px;
+  background-color: white;
+}
+.login .signin.effect {
+  left: -500%;
+}
+.login .signin .signin_inputs {
+  height: 60%;
+  display: flex;
+  flex-direction: column;
+
+  justify-content: space-between;
+  align-items: center;
+}
+
+.signin h2 {
+  margin: auto;
+}
+.login_inputs {
+  width: 500px;
+  height: 50px;
+  border-radius: var(--inputs-border-radius);
+  border: 2px solid #000000;
+  padding-left: 36px;
+
+  font-size: var(--signin-Button-font-size);
+}
+
+.login_inputs_medium {
+  width: var(--inputs-width-minimum);
+  height: 50px;
+  border-radius: 15px;
+  border: 2px solid #000000;
+  color: red;
+  font-size: var(--signin-Button-font-size);
+  padding-left: 36px;
+}
+
+/* --------Roles-select--------- */
+
+.roles_select {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* -----Roles---- */
+
+.role_btn {
+  height: 50px;
+  width: 165px;
+  border-radius: var(--inputs-border-radius);
+  border: var(--inputs-border);
+  background-color: white;
+  font-size: var(--signin-Button-font-size);
+  transition: 0.2S;
+}
+
+.role_btn.active {
+  border: red solid 2px;
+}
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+.sign_buttons {
+  height: 200px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* 1.2 ------signin-------- */
+
+.login .signup {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  transition: 0.5s;
+  background-color: white;
+  height: 600px;
+}
+
+.login .signup.effect {
+  left: -200%;
+}
+
+.login .signup .f_name_l {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+/* .login .signup .f_name_l input {
+  width: 200px;
+  height: 50px;
+  border-radius: 15px;
+  border: 2px solid #000000;
+  color: red;
+  font-size: var(--signin-Button-font-size);
+} */
+
+.phoneno_inputs {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+.phonenumber {
+  width: 80%;
+  height: 50px;
+  border: var(--inputs-border);
+  border-radius: 0 15px 15px 0;
+  border-left: none;
+  padding-left: 14px;
+  font-size: var(--signin-Button-font-size);
+}
+
+.country_code {
+  border: var(--inputs-border);
+  width: 20%;
+  border-radius: 15px 0px 0px 15px;
+  height: 56px;
+  border-right: none;
+  padding-left: var(--inputs-padding-left);
+  font-size: var(--signin-Button-font-size);
+}
+
+/* ------------- status error -------------- */
+
+.errmsg{
+  color: red;
+  border: 1px solid red;
+  border-radius: 10px;
+  width: 50%;
+  display: flex;
+  justify-content: center ;
+  align-items: center;
+  font-size: 1rem;
+  
+}
+.errmsg.offscreen {
+  border: none;
+}
+
+
+
+

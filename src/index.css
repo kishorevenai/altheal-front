@@ -1,0 +1,105 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200&display=swap");
+
+* {
+  font-family: "Poppins", sans-serif;
+  font-size: 20px;
+}
+
+body {
+  margin: 0;
+  box-sizing: border-box;
+  padding: 0;
+}
+
+.App {
+  box-sizing: border-box;
+  margin: 0px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  height: 100vh;
+}
+
+:root {
+  --buttonHeight: 400px;
+  --buttonWidth: 150px;
+  --signin-Button-color: #00000080;
+  --signin-Button-font-size: 15px;
+  --inputs-height: 50px;
+  --inputs-border: 2px solid #000000;
+  --inputs-border-radius: 15px;
+  --inputs-width-minimum: 200px;
+  --inputs-padding-left: 36px;
+}
+
+/*1 ----------------Global login button----------------- */
+.login_btn {
+  width: 320px;
+  height: 46px;
+  border-radius: 15px;
+  border: none;
+  background: #c99a29;
+  font-weight: 600;
+  font-size: 14px;
+  color: #ffffff;
+  transition: 0.2s;
+}
+.login_btn:hover {
+  background-color: red;
+  box-shadow: 0px 0px 10px red;
+}
+
+/* 1.2 ------signin------- */
+
+/* (--x close button--) */
+
+.x_btn {
+  transition: 0.2s;
+  cursor: pointer;
+}
+.x_btn::after {
+  content: "";
+  height: 2px;
+  width: 20px;
+  position: absolute;
+  top: 30px;
+  right: 30px;
+  background-color: #c99a29;
+  transform: rotate(45deg);
+}
+
+.x_btn::before {
+  content: "";
+  height: 2px;
+  width: 20px;
+  position: absolute;
+  top: 30px;
+  right: 30px;
+  background-color: #c99a29;
+  transform: rotate(-45deg);
+}
+
+/* -------------------Loader------------------- */
+
+/* HTML: <div class="loader"></div> */
+.loader {
+  width: 50px;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  padding: 3px;
+  background: radial-gradient(farthest-side, #ffa516 95%, #0000) 50% 0/12px 12px
+      no-repeat,
+    radial-gradient(
+        farthest-side,
+        #0000 calc(100% - 5px),
+        #ffa516 calc(100% - 4px)
+      )
+      content-box;
+  animation: l6 2s infinite;
+}
+@keyframes l6 {
+  to {
+    transform: rotate(1turn);
+  }
+}
