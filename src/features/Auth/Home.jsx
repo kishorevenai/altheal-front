@@ -4,7 +4,7 @@ import WowChart from "./WowChart";
 const Home = () => {
   return (
     <div>
-    <WowChart/>
+      <WowChart />
     </div>
   );
 };

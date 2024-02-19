@@ -12,13 +12,13 @@ body {
 }
 
 .App {
+  position: relative;
   box-sizing: border-box;
   margin: 0px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: relative;
-  height: 100vh;
+  min-height: 100vh;
+  
+  margin: auto;
+  border: 1px solid black;
 }
 
 :root {
