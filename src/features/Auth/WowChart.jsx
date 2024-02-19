@@ -54,7 +54,7 @@ const WowChart = () => {
     ],
   };
 
-  return <Radar style={{ width: "600px" }} data={data}></Radar>;
+  return <Radar style={{ width: "400px",height:"400px" }} data={data}></Radar>;
 };
 
 export default WowChart;

@@ -16,9 +16,7 @@ body {
   box-sizing: border-box;
   margin: 0px;
   min-height: 100vh;
-  
-  margin: auto;
-  border: 1px solid black;
+  width: 100vw;
 }
 
 :root {
@@ -26,11 +24,16 @@ body {
   --buttonWidth: 150px;
   --signin-Button-color: #00000080;
   --signin-Button-font-size: 15px;
+  --button-border-radius: 30px;
+  --button-height: 50px;
   --inputs-height: 50px;
   --inputs-border: 2px solid #000000;
   --inputs-border-radius: 15px;
   --inputs-width-minimum: 200px;
   --inputs-padding-left: 36px;
+  --button-border-color: #7f7f7f;
+  --button-font-weight: 550;
+  --button-font-size: 22px;
 }
 
 /*1 ----------------Global login button----------------- */
@@ -102,4 +105,17 @@ body {
   to {
     transform: rotate(1turn);
   }
+}
+
+/* ---------------------------DashMenu.jsx------------------------ */
+
+.dash_menu_btn {
+  width: 225px;
+  height: var(--button-height);
+  border-radius: var(--button-border-radius);
+  border: 2px solid var(--button-border-color);
+  background-color: white;
+  font-size: 20px;
+  color: var(--button-border-color);
+  font-weight: var(--button-font-weight);
 }

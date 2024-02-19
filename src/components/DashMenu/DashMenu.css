@@ -1,0 +1,48 @@
+.dash_menu {
+  font-size: 1rem;
+  width: 15%;
+  /* border: 1px solid black; */
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  border-right: 1px solid black;
+}
+.logo-with-btns {
+  display: flex;
+  flex-direction: column;
+  /* border: 1px solid black; */
+  height: 600px;
+  justify-content: space-between;
+  align-items: center;
+}
+.dashOptions {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  height: 400px;
+  /* border: 1px solid black; */
+}
+.logout_button {
+  width: 150px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  /* border: 1px solid black; */
+  margin-bottom: 46px;
+}
+.logout_button p {
+  font-size: var(--button-font-size);
+  border: 1px soild black;
+  font-weight: var(--button-font-weight);
+}
+
+.logo {
+  width: 250px;
+  margin: auto 51px;
+}
+.logout-arrow {
+  width: 30px;
+}

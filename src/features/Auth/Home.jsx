@@ -1,10 +1,10 @@
-// import useAuth from "../../hooks/useAuth";
 import WowChart from "./WowChart";
 
 const Home = () => {
   return (
     <div>
-      <WowChart />
+      {/* <WowChart /> */}
+      haiii
     </div>
   );
 };

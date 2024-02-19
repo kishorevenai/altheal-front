@@ -3,7 +3,7 @@ import Layout from "./components/Layout";
 import Login from "./features/Auth/Login/Login";
 import Home from "./features/Auth/Home";
 // import RequestAuth from "./hooks/RequestAuth";
-import DashLayout from "./components/DashLayout";
+import DashLayout from "./components/DashLayout/DashLayout";
 import "./App.css";
 
 function App() {

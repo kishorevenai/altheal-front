@@ -117,7 +117,6 @@ const Login = () => {
     } catch (error) {
       if (!error.status) {
         setErrMsg("No server response");
-        console.log(error)
       } else if (error.status === 400) {
         setErrMsg("Missing username and password");
       } else if (error.status === 404) {
@@ -131,7 +130,6 @@ const Login = () => {
   const handleSignUp = async (e) => {
     e.preventDefault();
     try {
-      console.log('haiiiiiiii---------------->')
       const result = await signIn({
         firstname,
         lastname,
@@ -140,9 +138,9 @@ const Login = () => {
         phonenumber,
         role,
       });
+
       console.log(result);
     } catch (error) {
-      console.log(error);
       if (!error.statue) {
         setErrMsg("No server response");
       } else if (error.statue === 400) {

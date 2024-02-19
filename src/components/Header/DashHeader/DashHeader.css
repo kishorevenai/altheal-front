@@ -1,0 +1,8 @@
+.dash_header {
+  width: 100%;
+}
+
+.home_bread_crumb {
+  display: flex;
+  /* border: 1px solid black; */
+}
