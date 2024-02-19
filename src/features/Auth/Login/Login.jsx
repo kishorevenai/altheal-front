@@ -1,10 +1,11 @@
-import { useLoginMutation } from "../authApiSlice";
+import { useLoginMutation, useSignInMutation } from "../authApiSlice";
 import { setCredentials } from "../authSlice";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { useEffect, useRef, useState } from "react";
 import { usePersist } from "../../../hooks/usePersist";
 import logo from "../../../assets/company-logo.svg";
+
 import "./Login.css";
 import WowChart from "../WowChart";
 import { roles } from "../../../config/roles";
@@ -13,11 +14,25 @@ const Login = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const [login, { isLoading, isError, error }] = useLoginMutation();
+  const [login, { isLoading: isLoginLoading, isError, error }] =
+    useLoginMutation();
+  const [
+    signIn,
+    { isLoading: isSignUpLoading, isError: isSignupError, error: signupErrro },
+  ] = useSignInMutation();
   const [persist, setPersist] = usePersist();
 
+  // ----------------------login credentials----------------------------
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  // -------------------------------------------------------------------
+
+  // ------------------------Sign up credentials------------------------
+  const [firstname, setFirstname] = useState("");
+  const [lastname, setLastname] = useState("");
+  const [signupEmail, setSignUpEmail] = useState("");
+  const [signupPassword, setSignUpPassword] = useState("");
+  const [phonenumber, setPhoneNumber] = useState("");
   const [role, setRoles] = useState([]);
 
   const [errMsg, setErrMsg] = useState(null);
@@ -30,7 +45,16 @@ const Login = () => {
   const [trueSignup, setTrueSignUp] = useState(true);
 
   const setDisable = trueSignin && trueSignup;
-  const setDataCredentials = [email, password].every(Boolean) && !isLoading;
+
+  // ---------------------required--inputs----------------------
+
+  const setDataCredentials =
+    [email, password].every(Boolean) && !isLoginLoading;
+
+  const setSignUpDataCredentials =
+    [signupEmail, signupPassword, firstname, lastname, password].every(
+      Boolean
+    ) && !isSignUpLoading;
 
   const errorClass = errMsg ? "errmsg" : "errmsg offscreen";
 
@@ -44,13 +68,13 @@ const Login = () => {
   };
 
   const RolesChoose = roles.map((innerRole) => {
-    let activeClassName = false
-    if(role.includes(innerRole)) {
-      activeClassName = true
+    let activeClassName = false;
+    if (role.includes(innerRole)) {
+      activeClassName = true;
     }
     return (
       <button
-        className={activeClassName ? "role_btn active" :"role_btn"}
+        className={activeClassName ? "role_btn active" : "role_btn"}
         key={innerRole}
         onClick={handleSelectedRole}
         value={innerRole}
@@ -67,7 +91,7 @@ const Login = () => {
 
   useEffect(() => {
     setErrMsg("");
-  }, [email, password]);
+  }, [email, password, firstname, lastname, phonenumber]);
 
   const HandleShowSignIn = () => {
     setTrueSignIn((prev) => !prev);
@@ -86,35 +110,58 @@ const Login = () => {
         partyRoleNm: "Member",
       });
 
-      console.log(data)
-
       const { token } = data;
 
       dispatch(setCredentials({ token }));
       navigate("/dash");
     } catch (error) {
       if (!error.status) {
-        
-        setErrMsg('No server response');
+        setErrMsg("No server response");
+        console.log(error)
       } else if (error.status === 400) {
         setErrMsg("Missing username and password");
       } else if (error.status === 404) {
         setErrMsg("Unauthorised");
-      } 
-
-      else {
+      } else {
         setErrMsg(error?.data?.message);
       }
     }
   };
 
-  if (isLoading) {
+  const handleSignUp = async (e) => {
+    e.preventDefault();
+    try {
+      console.log('haiiiiiiii---------------->')
+      const result = await signIn({
+        firstname,
+        lastname,
+        email: signupEmail,
+        password: signupPassword,
+        phonenumber,
+        role,
+      });
+      console.log(result);
+    } catch (error) {
+      console.log(error);
+      if (!error.statue) {
+        setErrMsg("No server response");
+      } else if (error.statue === 400) {
+        setErrMsg("Missing username and password");
+      } else if (error.statue === 404) {
+        setErrMsg("Unauthorised");
+      } else {
+        setErrMsg(error?.data?.message);
+      }
+    }
+  };
+
+  if (isLoginLoading) {
     return <div className="loader"></div>;
   }
 
   return (
     <div className="login">
-      <img className="company-logo" src={logo}></img>
+      <img alt="company-logo" className="company-logo" src={logo}></img>
       <div className="sign_buttons">
         <button
           className="login_btn login_page-button"
@@ -142,7 +189,7 @@ const Login = () => {
         className={trueSignin ? "signin effect" : "signin"}
       >
         <p className={errorClass} ref={errRef} aria-label="assertive">
-          {JSON.stringify(errMsg)}
+          {errMsg}
         </p>
         <div onClick={HandleShowSignIn} className="x_btn"></div>
         <h2>Sign In</h2>
@@ -172,30 +219,42 @@ const Login = () => {
         </button>
       </form>
 
-      <div className={trueSignup ? "signup effect" : "signup"}>
+      <form
+        onSubmit={handleSignUp}
+        className={trueSignup ? "signup effect" : "signup"}
+      >
         <h2>Sign Up</h2>
+        <p className={errorClass} ref={errRef} aria-label="assertive">
+          {errMsg}
+        </p>
         <div className="f_name_l">
           <input
             ref={firstnameRef}
             className="login_inputs_medium"
             placeholder="First name"
             type="text"
+            value={firstname}
+            onChange={(e) => setFirstname(e.target.value)}
           ></input>
           <input
             className="login_inputs_medium"
             placeholder="Last name"
             type="text"
+            value={lastname}
+            onChange={(e) => setLastname(e.target.value)}
           ></input>
         </div>
         <input
           className="login_inputs"
           placeholder="Email"
           type="email"
+          onChange={(e) => setSignUpEmail(e.target.value)}
         ></input>
         <input
           className="login_inputs"
           type="password"
           placeholder="Password"
+          onChange={(e) => setSignUpPassword(e.target.value)}
         ></input>
         <div className="phoneno_inputs">
           <div onClick={HandleShowSignUp} className="x_btn"></div>
@@ -207,11 +266,14 @@ const Login = () => {
             className="phonenumber"
             placeholder="Number"
             type="number"
+            onChange={(e) => setPhoneNumber(e.target.value)}
           ></input>
         </div>
         <div className="roles_select">{RolesChoose}</div>
-        <button className="login_btn">Sign up</button>
-      </div>
+        <button type="submit" className="login_btn">
+          Sign up
+        </button>
+      </form>
     </div>
   );
 };
