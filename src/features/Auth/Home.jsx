@@ -4,7 +4,7 @@ const Home = () => {
   return (
     <div>
       {/* <WowChart /> */}
-      haiii
+      content...
     </div>
   );
 };

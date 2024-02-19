@@ -1,8 +1,36 @@
 .dash_header {
-  width: 100%;
+  width: auto;
+  border-bottom: 1px solid black;
+  display: flex;
+  justify-content: space-between;
 }
 
 .home_bread_crumb {
   display: flex;
-  /* border: 1px solid black; */
+  width: 250px;
+
+  justify-content: space-evenly;
+}
+
+.bread_crumb_options {
+  width: 60%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.role_profile_alerts {
+  justify-content: space-between;
+  align-items: center;
+  width: 200px;
+  display: flex;
+}
+
+.dash_board,
+.notification {
+  font-size: 20px;
+}
+
+.profile_icon {
+  width: 50px;
 }
