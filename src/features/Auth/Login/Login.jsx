@@ -1,13 +1,14 @@
-import { useLoginMutation, useSignInMutation } from "../authApiSlice";
+import {
+  useLoginMutation,
+  useGetCountryCodeQuery,
+  useSignInMutation,
+} from "../authApiSlice";
 import { setCredentials } from "../authSlice";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { useEffect, useRef, useState } from "react";
-import { usePersist } from "../../../hooks/usePersist";
 import logo from "../../../assets/company-logo.svg";
-
 import "./Login.css";
-import WowChart from "../WowChart";
 import { roles } from "../../../config/roles";
 
 const Login = () => {
@@ -16,11 +17,15 @@ const Login = () => {
 
   const [login, { isLoading: isLoginLoading, isError, error }] =
     useLoginMutation();
+
+  const { data: countryCodeData, isSuccess: isCountryCodeSuccess } =
+    useGetCountryCodeQuery();
+
   const [
     signIn,
     { isLoading: isSignUpLoading, isError: isSignupError, error: signupErrro },
   ] = useSignInMutation();
-  const [persist, setPersist] = usePersist();
+  // const [persist, setPersist] = usePersist();
 
   // ----------------------login credentials----------------------------
   const [email, setEmail] = useState("");
@@ -33,6 +38,7 @@ const Login = () => {
   const [signupEmail, setSignUpEmail] = useState("");
   const [signupPassword, setSignUpPassword] = useState("");
   const [phonenumber, setPhoneNumber] = useState("");
+  const [onCountryCode, setOnCountryCode] = useState("");
   const [role, setRoles] = useState([]);
 
   const [errMsg, setErrMsg] = useState(null);
@@ -59,25 +65,43 @@ const Login = () => {
   const errorClass = errMsg ? "errmsg" : "errmsg offscreen";
 
   const handleSelectedRole = (e) => {
-    if (!role.includes(e.target.value)) {
-      setRoles((prev) => [...prev, e.target.value]);
+    const selectedRole = e.target.value;
+    if (!role.includes(selectedRole)) {
+      // Add the role to the array if it's not already present
+      setRoles((prevRoles) => [...prevRoles, selectedRole]);
     } else {
-      const filter = role.filter((prev) => prev != e.target.value);
-      setRoles(filter);
+      // Remove the role from the array if it's already present
+      setRoles((prevRoles) =>
+        prevRoles.filter((role) => role !== selectedRole)
+      );
     }
   };
+
+  let countryCodeNumber = null;
+
+  if (isCountryCodeSuccess) {
+    countryCodeNumber = countryCodeData.map((countryCode, index) => {
+      return (
+        <option key={index} value={countryCode.mobileCode}>
+          {countryCode.countryShortCode}-{countryCode.mobileCode}
+        </option>
+      );
+    });
+  }
 
   const RolesChoose = roles.map((innerRole) => {
     let activeClassName = false;
     if (role.includes(innerRole)) {
       activeClassName = true;
     }
+
     return (
       <button
         className={activeClassName ? "role_btn active" : "role_btn"}
         key={innerRole}
         onClick={handleSelectedRole}
         value={innerRole}
+        type="button"
       >
         {innerRole}
       </button>
@@ -129,17 +153,18 @@ const Login = () => {
 
   const handleSignUp = async (e) => {
     e.preventDefault();
+    console.log("inSignUp");
+
     try {
       const result = await signIn({
-        firstname,
-        lastname,
+        firstName: firstname,
+        lastName: lastname,
         email: signupEmail,
         password: signupPassword,
-        phonenumber,
-        role,
+        mobileNumber: phonenumber,
+        partyRoleNm: "Member",
+        admCountryId: onCountryCode,
       });
-
-      console.log(result);
     } catch (error) {
       if (!error.statue) {
         setErrMsg("No server response");
@@ -256,9 +281,12 @@ const Login = () => {
         ></input>
         <div className="phoneno_inputs">
           <div onClick={HandleShowSignUp} className="x_btn"></div>
-          <select className="country_code">
-            <option>IND</option>
-            <option>US</option>
+          <select
+            className="country_code"
+            onChange={(e) => setOnCountryCode(e.target.value)}
+          >
+            <option value=" "></option>
+            {countryCodeNumber}
           </select>
           <input
             className="phonenumber"
@@ -268,7 +296,7 @@ const Login = () => {
           ></input>
         </div>
         <div className="roles_select">{RolesChoose}</div>
-        <button type="submit" className="login_btn">
+        <button className="login_btn" type="submit">
           Sign up
         </button>
       </form>

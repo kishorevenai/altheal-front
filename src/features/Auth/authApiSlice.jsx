@@ -1,5 +1,5 @@
 import { apiSlice } from "../../app/api/apiSlice";
-import { setCredentials, logOut } from "./authSlice";
+import { setCredentials} from "./authSlice";
 
 export const authApiSlice = apiSlice.injectEndpoints({
   endpoints: (builder) => ({
@@ -37,8 +37,14 @@ export const authApiSlice = apiSlice.injectEndpoints({
         }
       },
     }),
+    getCountryCode: builder.query({
+      query: () => ({
+        url: "/country/code",
+        method: "GET",
+      }),
+    }),
   }),
 });
 
-export const { useLoginMutation, useRefreshMutation, useSignInMutation } =
+export const { useLoginMutation, useRefreshMutation, useSignInMutation, useGetCountryCodeQuery} =
   authApiSlice;

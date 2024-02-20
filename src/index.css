@@ -29,7 +29,7 @@ body {
   --inputs-border: 2px solid #000000;
   --inputs-border-radius: 15px;
   --inputs-width-minimum: 200px;
-  --inputs-padding-left: 36px;
+  --inputs-padding-left: 10px;
   --button-border-color: #7f7f7f;
   --button-font-weight: 550;
   --button-font-size: 22px;
