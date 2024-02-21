@@ -1,8 +1,4 @@
-import {
-  useLoginMutation,
-  useGetCountryCodeQuery,
-  useSignInMutation,
-} from "../authApiSlice";
+import { useGetCountryCodeQuery, useSignInMutation } from "../authApiSlice";
 import { setCredentials } from "../authSlice";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
@@ -10,15 +6,12 @@ import { useEffect, useRef, useState } from "react";
 import logo from "../../../assets/company-logo.svg";
 import "./Login.css";
 import { roles } from "../../../config/roles";
+import LoginHome from "./LoginHome/LoginHome";
+import LoginSignUp from "./LoginSignUp/LoginSignUp";
 
 const Login = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-
-  const [
-    login,
-    { isLoading: isLoginLoading, isError: isLoginError, error: loginError },
-  ] = useLoginMutation();
 
   const { data: countryCodeData, isSuccess: isCountryCodeSuccess } =
     useGetCountryCodeQuery();
@@ -29,11 +22,6 @@ const Login = () => {
   ] = useSignInMutation();
   // const [persist, setPersist] = usePersist();
 
-  // ----------------------login credentials----------------------------
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  // -------------------------------------------------------------------
-
   // ------------------------Sign up credentials------------------------
   const [firstname, setFirstname] = useState("");
   const [lastname, setLastname] = useState("");
@@ -43,11 +31,8 @@ const Login = () => {
   const [onCountryCode, setOnCountryCode] = useState("");
   const [role, setRoles] = useState([]);
 
-  const [errMsg, setErrMsg] = useState(null);
-
   const firstnameRef = useRef();
   const userRef = useRef();
-  const errRef = useRef();
   // ------------state--for--sign-------------
   const [trueSignin, setTrueSignIn] = useState(true);
   const [trueSignup, setTrueSignUp] = useState(true);
@@ -56,15 +41,11 @@ const Login = () => {
 
   // ---------------------required--inputs----------------------
 
-  const setDataCredentials =
-    [email, password].every(Boolean) && !isLoginLoading;
+  // const setSignUpDataCredentials =
+  //   [signupEmail, signupPassword, firstname, lastname, password].every(
+  //     Boolean
+  //   ) && !isSignUpLoading;
 
-  const setSignUpDataCredentials =
-    [signupEmail, signupPassword, firstname, lastname, password].every(
-      Boolean
-    ) && !isSignUpLoading;
-
-  const errorClass = errMsg ? "errmsg" : "errmsg offscreen";
 
   const handleSelectedRole = (e) => {
     const selectedRole = e.target.value;
@@ -110,14 +91,10 @@ const Login = () => {
     );
   });
 
-  useEffect(() => {
-    firstnameRef.current.focus();
-    userRef.current.focus();
-  }, []);
 
-  useEffect(() => {
-    setErrMsg("");
-  }, [email, password, firstname, lastname, phonenumber]);
+  // useEffect(() => {
+  //   setErrMsg("");
+  // }, [email, password, firstname, lastname, phonenumber]);
 
   const HandleShowSignIn = () => {
     setTrueSignIn((prev) => !prev);
@@ -143,7 +120,7 @@ const Login = () => {
       dispatch(setCredentials({ token }));
       navigate("/dash");
     } catch (error) {
-      console.log(loginError)
+      console.log(loginError);
       if (loginError?.status === 404) {
         setErrMsg("invalid credentials");
       } else if (error.status === 400) {
@@ -174,7 +151,6 @@ const Login = () => {
 
       navigate("/dash");
     } catch (error) {
-      
       if (!error.statue) {
         setErrMsg("No server response");
       } else if (error.statue === 400) {
@@ -187,14 +163,11 @@ const Login = () => {
     }
   };
 
-  if (isLoginLoading) {
-    return <div className="loader"></div>;
-  }
 
   return (
     <div className="login">
       <img alt="company-logo" className="company-logo" src={logo}></img>
-      <div className="sign_buttons">
+      {/* <div className="sign_buttons">
         <button
           className="login_btn login_page-button"
           disabled={!setDisable}
@@ -214,9 +187,14 @@ const Login = () => {
         >
           Sign Up
         </button>
-      </div>
+      </div> */}
+      <LoginHome
+        setTrueSignIn={setTrueSignIn}
+        setTrueSignUp={setTrueSignUp}
+        setDisable={setDisable}
+      />
 
-      <form
+      {/* <form
         onSubmit={handleLogin}
         className={trueSignin ? "signin effect" : "signin"}
       >
@@ -249,16 +227,18 @@ const Login = () => {
         >
           Sign in
         </button>
-      </form>
+      </form> */}
+
+      <LoginSignUp trueSignin={trueSignin} setTrueSignIn={setTrueSignIn} />
 
       <form
         onSubmit={handleSignUp}
         className={trueSignup ? "signup effect" : "signup"}
       >
         <h2>Sign Up</h2>
-        <p className={errorClass} ref={errRef} aria-label="assertive">
+        {/* <p className={errorClass} ref={errRef} aria-label="assertive">
           {errMsg}
-        </p>
+        </p> */}
         <div className="f_name_l">
           <input
             ref={firstnameRef}
