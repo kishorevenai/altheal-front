@@ -5,13 +5,11 @@ import { authApiSlice } from "./authApiSlice";
 
 const PrefetchCntyCode = () => {
   useEffect(() => {
-    console.log("subscribing");
     const countryCode = store.dispatch(
       authApiSlice.endpoints.getCountryCode.initiate()
     );
 
     return () => {
-      console.log("unsubscribing");
       countryCode.unsubscribe();
     };
   }, []);

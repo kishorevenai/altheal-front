@@ -144,7 +144,7 @@ const Login = () => {
       navigate("/dash");
     } catch (error) {
       console.log(loginError)
-      if (loginError.status === 404) {
+      if (loginError?.status === 404) {
         setErrMsg("invalid credentials");
       } else if (error.status === 400) {
         setErrMsg("Missing username and password");
