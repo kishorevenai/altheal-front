@@ -143,8 +143,9 @@ const Login = () => {
       dispatch(setCredentials({ token }));
       navigate("/dash");
     } catch (error) {
-      if (!error.status) {
-        setErrMsg("No server response");
+      console.log(loginError)
+      if (loginError.status === 404) {
+        setErrMsg("invalid credentials");
       } else if (error.status === 400) {
         setErrMsg("Missing username and password");
       } else if (error.status === 404) {
@@ -173,6 +174,7 @@ const Login = () => {
 
       navigate("/dash");
     } catch (error) {
+      
       if (!error.statue) {
         setErrMsg("No server response");
       } else if (error.statue === 400) {
