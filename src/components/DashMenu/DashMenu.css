@@ -33,11 +33,15 @@
   align-items: center;
   /* border: 1px solid black; */
   margin-bottom: 46px;
+  cursor: pointer;
 }
-.logout_button p {
+.log_out_btn {
   font-size: var(--button-font-size);
-  border: 1px soild black;
+  border: 1px soild rgb(0, 0, 0);
   font-weight: var(--button-font-weight);
+  border: none;
+  background-color: white;
+  cursor: pointer;
 }
 
 .logo {

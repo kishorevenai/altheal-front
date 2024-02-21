@@ -15,8 +15,10 @@ const Login = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const [login, { isLoading: isLoginLoading, isError, error }] =
-    useLoginMutation();
+  const [
+    login,
+    { isLoading: isLoginLoading, isError: isLoginError, error: loginError },
+  ] = useLoginMutation();
 
   const { data: countryCodeData, isSuccess: isCountryCodeSuccess } =
     useGetCountryCodeQuery();
@@ -134,6 +136,8 @@ const Login = () => {
         partyRoleNm: "Member",
       });
 
+      console.log(data);
+
       const { token } = data;
 
       dispatch(setCredentials({ token }));
@@ -153,7 +157,6 @@ const Login = () => {
 
   const handleSignUp = async (e) => {
     e.preventDefault();
-    console.log("inSignUp");
 
     try {
       const result = await signIn({
@@ -165,6 +168,10 @@ const Login = () => {
         partyRoleNm: "Member",
         admCountryId: onCountryCode,
       });
+
+      dispatch(setCredentials(result.data));
+
+      navigate("/dash");
     } catch (error) {
       if (!error.statue) {
         setErrMsg("No server response");

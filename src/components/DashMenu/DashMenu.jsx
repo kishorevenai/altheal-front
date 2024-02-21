@@ -1,8 +1,23 @@
 import Logo from "../../assets/company-logo.svg";
 import "./DashMenu.css";
 import logoutArrow from "../../assets/logout-arrow.svg";
+import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import { logOut } from "../../features/Auth/authSlice";
 
 const DashMenu = () => {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+
+
+
+
+  const handleLogOut = () => {
+    dispatch(logOut())
+   navigate('/') 
+  }
+
   const menuOptions = [
     "Dashboard",
     "Documentation",
@@ -31,7 +46,7 @@ const DashMenu = () => {
           alt="logout-arrow"
           src={logoutArrow}
         ></img>
-        <p>Log out</p>
+        <button onClick={handleLogOut} className="log_out_btn">Log out</button>
       </div>
     </div>
   );
