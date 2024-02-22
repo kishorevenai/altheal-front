@@ -7,85 +7,18 @@
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
-  height: 50%;
+  height:400px;
+  width: 500px; 
+  /* border: 1px solid black; */
 }
 .company-logo {
-  width: 330px;
+    width: 60%;
 }
 
-/* 1.2 ------signup-------- */
 
-.login .signup {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-  align-items: center;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  transition: 0.5s;
-  background-color: white;
-  height: 600px;
+@media screen and (max-width:600px) { 
+  .login   {
+     width: 80%;
+  }
 }
 
-.login .signup.effect {
-  left: -300%;
-}
-
-.login .signup .f_name_l {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 100%;
-}
-/* .login .signup .f_name_l input {
-  width: 200px;
-  height: 50px;
-  border-radius: 15px;
-  border: 2px solid #000000;
-  color: red;
-  font-size: var(--signin-Button-font-size);
-} */
-
-.phoneno_inputs {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-}
-.phonenumber {
-  width: 80%;
-  height: 50px;
-  border: var(--inputs-border);
-  border-radius: 0 15px 15px 0;
-  border-left: none;
-  padding-left: 14px;
-  font-size: var(--signin-Button-font-size);
-}
-
-.country_code {
-  border: var(--inputs-border);
-  width: 20%;
-  border-radius: 15px 0px 0px 15px;
-  height: 56px;
-  border-right: none;
-  padding-left: var(--inputs-padding-left);
-  font-size: var(--signin-Button-font-size);
-}
-
-/* ------------- status error -------------- */
-
-/* .errmsg {
-  color: red;
-  border: 1px solid red;
-  border-radius: 10px;
-  width: 50%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 1rem;
-}
-.errmsg.offscreen {
-  border: none;
-} */

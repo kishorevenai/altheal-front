@@ -1,0 +1,52 @@
+/* 1.2 ------signup-------- */
+
+.login .signup {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  transition: 0.5s;
+  background-color: white;
+  height: 600px;
+}
+
+.login .signup.effect {
+  left: -1000%;
+}
+
+.login .signup .f_name_l {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.phoneno_inputs {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+.phonenumber {
+  width: 80%;
+  height: 50px;
+  border: var(--inputs-border);
+  border-radius: 0 15px 15px 0;
+  border-left: none;
+  padding-left: 14px;
+  font-size: var(--signin-Button-font-size);
+}
+
+.country_code {
+  border: var(--inputs-border);
+  width: 20%;
+  border-radius: 15px 0px 0px 15px;
+  height: 56px;
+  border-right: none;
+  padding-left: var(--inputs-padding-left);
+  font-size: var(--signin-Button-font-size);
+}

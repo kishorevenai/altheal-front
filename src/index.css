@@ -37,7 +37,7 @@ body {
 
 /*1 ----------------Global login button----------------- */
 .login_btn {
-  width: 320px;
+  width:80%;
   height: 46px;
   border-radius: 15px;
   border: none;

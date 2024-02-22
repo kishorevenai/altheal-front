@@ -4,16 +4,20 @@
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
+  width: 80%;
+  /* border: 1px solid black; */
 }
 
 .line {
-  width: 220px;
+  width: 40%;
   height: 2px;
   background-color: black;
 }
 .l_or_l {
-  width: 500px;
+  width: 50%;
   display: flex;
   justify-content: space-evenly;
   align-items: center;
+  /* border: 1px solid black; */
+  width: 100%;
 }
