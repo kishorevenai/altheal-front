@@ -1,11 +1,11 @@
 import React, { useEffect, useRef, useState } from "react";
-import "./LoginSignUp.css";
+import "./LoginSignIn.css";
 import { useLoginMutation } from "../../authApiSlice";
 import { useDispatch } from "react-redux";
 import { setCredentials } from "../../authSlice";
 import { useNavigate } from "react-router-dom";
 
-const LoginSignUp = ({ trueSignin, setTrueSignIn }) => {
+const LoginSignIn = ({ trueSignin, setTrueSignIn }) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const errRef = useRef();
@@ -108,4 +108,4 @@ const LoginSignUp = ({ trueSignin, setTrueSignIn }) => {
   );
 };
 
-export default LoginSignUp;
+export default LoginSignIn;

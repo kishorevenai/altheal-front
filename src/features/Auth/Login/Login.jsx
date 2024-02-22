@@ -46,7 +46,6 @@ const Login = () => {
   //     Boolean
   //   ) && !isSignUpLoading;
 
-
   const handleSelectedRole = (e) => {
     const selectedRole = e.target.value;
     if (!role.includes(selectedRole)) {
@@ -90,7 +89,6 @@ const Login = () => {
       </button>
     );
   });
-
 
   // useEffect(() => {
   //   setErrMsg("");
@@ -162,7 +160,6 @@ const Login = () => {
       }
     }
   };
-
 
   return (
     <div className="login">
