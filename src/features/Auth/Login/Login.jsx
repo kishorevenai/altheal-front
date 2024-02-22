@@ -40,18 +40,18 @@ const Login = () => {
 
   const setDisable = trueSignin && trueSignup;
 
-  const handleSelectedRole = (e) => {
-    const selectedRole = e.target.value;
-    if (!role.includes(selectedRole)) {
-      // Add the role to the array if it's not already present
-      setRoles((prevRoles) => [...prevRoles, selectedRole]);
-    } else {
-      // Remove the role from the array if it's already present
-      setRoles((prevRoles) =>
-        prevRoles.filter((role) => role !== selectedRole)
-      );
-    }
-  };
+  // const handleSelectedRole = (e) => {
+  //   const selectedRole = e.target.value;
+  //   if (!role.includes(selectedRole)) {
+  //     // Add the role to the array if it's not already present
+  //     setRoles((prevRoles) => [...prevRoles, selectedRole]);
+  //   } else {
+  //     // Remove the role from the array if it's already present
+  //     setRoles((prevRoles) =>
+  //       prevRoles.filter((role) => role !== selectedRole)
+  //     );
+  //   }
+  // };
 
   let countryCodeNumber = null;
 
@@ -65,24 +65,24 @@ const Login = () => {
     });
   }
 
-  const RolesChoose = roles.map((innerRole) => {
-    let activeClassName = false;
-    if (role.includes(innerRole)) {
-      activeClassName = true;
-    }
+  // const RolesChoose = roles.map((innerRole) => {
+  //   let activeClassName = false;
+  //   if (role.includes(innerRole)) {
+  //     activeClassName = true;
+  //   }
 
-    return (
-      <button
-        className={activeClassName ? "role_btn active" : "role_btn"}
-        key={innerRole}
-        onClick={handleSelectedRole}
-        value={innerRole}
-        type="button"
-      >
-        {innerRole}
-      </button>
-    );
-  });
+  //   return (
+  //     <button
+  //       className={activeClassName ? "role_btn active" : "role_btn"}
+  //       key={innerRole}
+  //       onClick={handleSelectedRole}
+  //       value={innerRole}
+  //       type="button"
+  //     >
+  //       {innerRole}
+  //     </button>
+  //   );
+  // });
 
   const HandleShowSignIn = () => {
     setTrueSignIn((prev) => !prev);
@@ -133,7 +133,7 @@ const Login = () => {
 
       <LoginSignIn trueSignin={trueSignin} setTrueSignIn={setTrueSignIn} />
 
-      <LoginSignUp trueSignup={trueSignup} setTrueSignUp={setTrueSignUp}/>
+      <LoginSignUp trueSignup={trueSignup} setTrueSignUp={setTrueSignUp} />
 
       {/* <form
         onSubmit={handleSignUp}

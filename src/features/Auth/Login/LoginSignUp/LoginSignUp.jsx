@@ -3,6 +3,7 @@ import { useSignInMutation, useGetCountryCodeQuery } from "../../authApiSlice";
 import { useDispatch } from "react-redux";
 import { useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { roles } from "../../../../config/roles";
 
 const LoginSignUp = ({ trueSignup, setTrueSignUp }) => {
   const dispatch = useDispatch();
@@ -16,11 +17,15 @@ const LoginSignUp = ({ trueSignup, setTrueSignUp }) => {
   const [phonenumber, setPhoneNumber] = useState("");
   const [onCountryCode, setOnCountryCode] = useState("");
   const [role, setRoles] = useState([]);
+  const [errMsg, setErrMsg] = useState(null);
 
   //   ---------------refs-----------------------
 
   const firstnameRef = useRef();
   const userRef = useRef();
+  const errRef = useRef();
+
+  const errorClass = errMsg ? "errmsg" : "errmsg offscreen";
   // ------------------slices----------------------
   const [
     signIn,
@@ -30,28 +35,20 @@ const LoginSignUp = ({ trueSignup, setTrueSignUp }) => {
   const { data: countryCodeData, isSuccess: isCountryCodeSuccess } =
     useGetCountryCodeQuery();
 
-  // -------------------inner-components---------------------
-
-  let countryCodeNumber = null;
-
-  if (isCountryCodeSuccess) {
-    countryCodeNumber = countryCodeData.map((countryCode, index) => {
-      return (
-        <option key={index} value={countryCode.mobileCode}>
-          {countryCode.countryShortCode}-{countryCode.mobileCode}
-        </option>
-      );
-    });
-  }
-
-  const RolesChoose = roles.map((innerRole) => {
-    let activeClassName = false;
-    if (role.includes(innerRole)) {
-      activeClassName = true;
-    }
-  })
-
   // ------------------functions-----------------------
+
+  const handleSelectedRole = (e) => {
+    const selectedRole = e.target.value;
+    if (!role.includes(selectedRole)) {
+      // Add the role to the array if it's not already present
+      setRoles((prevRoles) => [...prevRoles, selectedRole]);
+    } else {
+      // Remove the role from the array if it's already present
+      setRoles((prevRoles) =>
+        prevRoles.filter((role) => role !== selectedRole)
+      );
+    }
+  };
 
   const HandleShowSignUp = () => {
     setTrueSignUp((prev) => !prev);
@@ -87,15 +84,48 @@ const LoginSignUp = ({ trueSignup, setTrueSignUp }) => {
     }
   };
 
+  // -------------------inner-components---------------------
+
+  let countryCodeNumber = null;
+
+  if (isCountryCodeSuccess) {
+    countryCodeNumber = countryCodeData.map((countryCode, index) => {
+      return (
+        <option key={index} value={countryCode.mobileCode}>
+          {countryCode.countryShortCode}-{countryCode.mobileCode}
+        </option>
+      );
+    });
+  }
+
+  const RolesChoose = roles.map((innerRole) => {
+    let activeClassName = false;
+    if (role.includes(innerRole)) {
+      activeClassName = true;
+    }
+
+    return (
+      <button
+        className={activeClassName ? "role_btn active" : "role_btn"}
+        key={innerRole}
+        onClick={handleSelectedRole}
+        value={innerRole}
+        type="button"
+      >
+        {innerRole}
+      </button>
+    );
+  });
+
   return (
     <form
       onSubmit={handleSignUp}
       className={trueSignup ? "signup effect" : "signup"}
     >
       <h2>Sign Up</h2>
-      {/* <p className={errorClass} ref={errRef} aria-label="assertive">
-          {errMsg}
-        </p> */}
+      <p className={errorClass} ref={errRef} aria-label="assertive">
+        {errMsg}
+      </p>
       <div className="f_name_l">
         <input
           ref={firstnameRef}
