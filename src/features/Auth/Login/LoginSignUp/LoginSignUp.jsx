@@ -1,10 +1,10 @@
-import "./LoginSignIn.css";
-import { useSignInMutation } from "../../authApiSlice";
+import "./LoginSignUp.css";
+import { useSignInMutation, useGetCountryCodeQuery } from "../../authApiSlice";
 import { useDispatch } from "react-redux";
 import { useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-const LoginSignUp = ({}) => {
+const LoginSignUp = ({ trueSignup, setTrueSignUp }) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   //   ---------------states-------------------
@@ -30,7 +30,32 @@ const LoginSignUp = ({}) => {
   const { data: countryCodeData, isSuccess: isCountryCodeSuccess } =
     useGetCountryCodeQuery();
 
+  // -------------------inner-components---------------------
+
+  let countryCodeNumber = null;
+
+  if (isCountryCodeSuccess) {
+    countryCodeNumber = countryCodeData.map((countryCode, index) => {
+      return (
+        <option key={index} value={countryCode.mobileCode}>
+          {countryCode.countryShortCode}-{countryCode.mobileCode}
+        </option>
+      );
+    });
+  }
+
+  const RolesChoose = roles.map((innerRole) => {
+    let activeClassName = false;
+    if (role.includes(innerRole)) {
+      activeClassName = true;
+    }
+  })
+
   // ------------------functions-----------------------
+
+  const HandleShowSignUp = () => {
+    setTrueSignUp((prev) => !prev);
+  };
 
   const handleSignUp = async (e) => {
     e.preventDefault();
