@@ -22,7 +22,6 @@ const LoginSignUp = ({ trueSignup, setTrueSignUp }) => {
   //   ---------------refs-----------------------
 
   const firstnameRef = useRef();
-  const userRef = useRef();
   const errRef = useRef();
 
   const errorClass = errMsg ? "errmsg" : "errmsg offscreen";

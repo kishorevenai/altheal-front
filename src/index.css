@@ -28,7 +28,7 @@ body {
   --inputs-height: 50px;
   --inputs-border: 2px solid #000000;
   --inputs-border-radius: 15px;
-  --inputs-width-minimum: 200px;
+  --inputs-width-minimum:40%;
   --inputs-padding-left: 10px;
   --button-border-color: #7f7f7f;
   --button-font-weight: 550;
@@ -37,7 +37,7 @@ body {
 
 /*1 ----------------Global login button----------------- */
 .login_btn {
-  width:80%;
+  width: 86%;
   height: 46px;
   border-radius: 15px;
   border: none;
@@ -46,6 +46,7 @@ body {
   font-size: 14px;
   color: #ffffff;
   transition: 0.2s;
+  margin-bottom: 5%;
 }
 .login_btn:hover {
   background-color: red;
