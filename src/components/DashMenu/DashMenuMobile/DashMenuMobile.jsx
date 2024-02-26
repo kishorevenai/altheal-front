@@ -3,6 +3,7 @@ import "./DashMenuMobile.css";
 import companyLogo from "../../../assets/company-logo.svg";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { logOut } from "../../../features/Auth/authSlice";
 
 import logoutArrow from "../../../assets/logout-arrow.svg";
 

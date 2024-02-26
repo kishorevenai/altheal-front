@@ -17,7 +17,7 @@
     position: absolute;
     transform: translate(0%);
     transition: 0.5s;
-    z-index: 1;
+    z-index: -1;
     left: 0px;
     top: 7%;
     height: 100%;
