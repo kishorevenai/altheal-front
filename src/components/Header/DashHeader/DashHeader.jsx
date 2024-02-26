@@ -3,10 +3,13 @@ import home_logo from "../../../assets/home_icon.svg";
 import brdcrmbarrow from "../../../assets/brd_crmb_logo.svg";
 import profileIcon from "../../../assets/profile.svg";
 import notificationLogo from "../../../assets/notification.svg";
-
+import companyLogo from "../../../assets/company-logo.svg";
 export const DashHeader = () => {
   return (
     <div className="dash_header">
+      <div className="ham-par">
+        <div className="hamburger"></div>
+      </div>
       <div className="home_bread_crumb">
         <img alt="home_icon" src={home_logo} className="home_icn"></img>
         <div className="bread_crumb_options">
@@ -18,8 +21,9 @@ export const DashHeader = () => {
           <p className="dash_board">Dashboard</p>
         </div>
       </div>
+      <img src={companyLogo} className="company_logo" alt="company_logo"></img>
       <div className="role_profile_alerts">
-        <p>Member</p>
+        <p className="current_role">Member</p>
         <img
           className="profile_icon"
           src={profileIcon}

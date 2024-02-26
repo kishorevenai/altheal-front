@@ -1,8 +1,9 @@
 .dash_header {
   width: auto;
-  border-bottom: 1px solid black;
+  border-bottom: 2px solid black;
   display: flex;
   justify-content: space-between;
+  align-items: center;
 }
 
 .home_bread_crumb {
@@ -33,4 +34,39 @@
 
 .profile_icon {
   width: 50px;
+}
+
+.company_logo {
+  display: none;
+}
+.hamburger {
+  display: none;
+}
+
+@media screen and (max-width: 1023px) {
+  .dash_header {
+    width: 125%;
+    padding: 10px 0 10px 0;
+
+    justify-content: space-around;
+  }
+  .current_role {
+    display: none;
+  }
+  .notification {
+    display: none;
+  }
+  .company_logo {
+    display: block;
+    width: 20%;
+  }
+  .home_bread_crumb {
+    display: none;
+  }
+  .hamburger {
+    display: block;
+  }
+  .role_profile_alerts {
+    width: auto;
+  }
 }

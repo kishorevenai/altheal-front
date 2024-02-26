@@ -28,7 +28,7 @@ body {
   --inputs-height: 50px;
   --inputs-border: 2px solid #000000;
   --inputs-border-radius: 15px;
-  --inputs-width-minimum:40%;
+  --inputs-width-minimum: 40%;
   --inputs-padding-left: 10px;
   --button-border-color: #7f7f7f;
   --button-font-weight: 550;
@@ -110,12 +110,36 @@ body {
 /* ---------------------------DashMenu.jsx------------------------ */
 
 .dash_menu_btn {
-  width: 225px;
+  width: 90%;
   height: var(--button-height);
   border-radius: var(--button-border-radius);
   border: 2px solid var(--button-border-color);
   background-color: white;
-  font-size: 20px;
+  font-size: 85%;
   color: var(--button-border-color);
   font-weight: var(--button-font-weight);
+}
+
+/* ---------------------hamburger---------------------------- */
+.ham-par {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+.hamburger {
+  height: 2px;
+  width: 30px;
+  background-color: black;
+  position: relative;
+  border-radius: 10px;
+}
+.hamburger::before {
+  content: " ";
+  height: 2px;
+  width: 30px;
+  background-color: black;
+  position: absolute;
+  border-radius: 10px;
+  top: 10px;
 }

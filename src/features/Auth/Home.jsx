@@ -3,8 +3,7 @@ import WowChart from "./WowChart";
 const Home = () => {
   return (
     <div>
-      {/* <WowChart /> */}
-      content...
+     content... 
     </div>
   );
 };
