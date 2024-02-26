@@ -9,6 +9,7 @@
   justify-content: space-between;
   align-items: center;
   border-right: 2px solid black;
+  transition: 0.5s;
 }
 .logo-with-btns {
   display: flex;
@@ -54,10 +55,9 @@
   width: 30px;
 }
 
-
-
-@media screen and (max-width:1023px) {
-  .dash_menu{
-    display: none;
-  }  
+@media screen and (max-width: 1023px) {
+  .dash_menu {
+    overflow: hidden;
+    width: 0;
+  }
 }

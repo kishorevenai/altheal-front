@@ -121,25 +121,5 @@ body {
 }
 
 /* ---------------------hamburger---------------------------- */
-.ham-par {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: relative;
-}
-.hamburger {
-  height: 2px;
-  width: 30px;
-  background-color: black;
-  position: relative;
-  border-radius: 10px;
-}
-.hamburger::before {
-  content: " ";
-  height: 2px;
-  width: 30px;
-  background-color: black;
-  position: absolute;
-  border-radius: 10px;
-  top: 10px;
-}
+
+

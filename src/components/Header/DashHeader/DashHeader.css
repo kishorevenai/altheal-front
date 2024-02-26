@@ -47,8 +47,8 @@
   .dash_header {
     width: 125%;
     padding: 10px 0 10px 0;
-
     justify-content: space-around;
+    height: 5%; 
   }
   .current_role {
     display: none;

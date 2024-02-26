@@ -1,0 +1,38 @@
+.dash_option_mob {
+  display: none;
+}
+.logout_button{
+    margin: 0 auto;
+}
+.dashOptions {
+    margin: 0 auto;
+}
+
+@media screen and (max-width: 1023px) {
+  .dash_option_mob {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-content: center;
+    position: absolute;
+    transform: translate(0%);
+    transition: 0.5s;
+    z-index: 1;
+    left: 0px;
+    top: 7%;
+    height: 100%;
+    width: 50%;
+    background-color: white;
+    border: 1px solid black;
+    border-top: none;
+    margin: 0 auto;
+  }
+  .dash_option_mob.active {
+    left: -600px;
+    transition: 0.5s;
+  }
+  .company-logo {
+    width: 50%;
+    margin: 0 auto;
+  }
+}

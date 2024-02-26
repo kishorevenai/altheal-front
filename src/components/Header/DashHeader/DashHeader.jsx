@@ -4,12 +4,19 @@ import brdcrmbarrow from "../../../assets/brd_crmb_logo.svg";
 import profileIcon from "../../../assets/profile.svg";
 import notificationLogo from "../../../assets/notification.svg";
 import companyLogo from "../../../assets/company-logo.svg";
+import { Slant as Hamburger } from "hamburger-react";
+import { useState } from "react";
+import DashMenuMobile from "../../DashMenu/DashMenuMobile/DashMenuMobile";
+
 export const DashHeader = () => {
+  const [trueHam, setTrueHam] = useState(false);
+
   return (
     <div className="dash_header">
-      <div className="ham-par">
-        <div className="hamburger"></div>
+      <div className="hamburger">
+        <Hamburger toggle={setTrueHam} toggled={trueHam} size={25} />
       </div>
+      <DashMenuMobile trueHam={trueHam} setTrueHam={setTrueHam} />
       <div className="home_bread_crumb">
         <img alt="home_icon" src={home_logo} className="home_icn"></img>
         <div className="bread_crumb_options">
