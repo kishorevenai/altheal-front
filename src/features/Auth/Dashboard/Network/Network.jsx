@@ -1,8 +1,9 @@
 import React from 'react'
+import './Network.css'
 
 const Network = () => {
   return (
-    <div>Network</div>
+    <div className='network'>Network</div>
   )
 }
 

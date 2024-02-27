@@ -8,7 +8,7 @@
   margin: 1%;
   width: 80%;
   border: 1px solid black;
-  height:  80vh; 
+  height: 85vh; 
   display: flex;
   justify-content: space-around;
   flex-direction: column;
@@ -18,8 +18,14 @@
 .dash-part-two {
   width: 20%;
   border: 1px solid black;
-  height: 100vh;
-  margin: 1%;
+  height: 85vh;
+  margin: 1% auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  gap: 2%;
+
 }
 .welcome-p {
   border: 2px solid black;
