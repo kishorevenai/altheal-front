@@ -1,0 +1,20 @@
+.products {
+  height: 40%;
+  width: 100%;
+  border: 2px solid black;
+  border-radius: 10px;
+}
+
+.products h3 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-bottom: 2px solid black;
+}
+.allProducts {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: auto 3%;
+  height: 70%;
+}

@@ -1,0 +1,39 @@
+.dashboard {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  
+}
+.dash-part-one {
+  margin: 1%;
+  width: 80%;
+  border: 1px solid black;
+  height:  80vh; 
+  display: flex;
+  justify-content: space-around;
+  flex-direction: column;
+  align-items: center;
+  gap: 2%;
+}
+.dash-part-two {
+  width: 20%;
+  border: 1px solid black;
+  height: 100vh;
+  margin: 1%;
+}
+.welcome-p {
+  border: 2px solid black;
+  border-radius: 10px;
+  padding: 10px;
+  width: 98%;
+}
+
+.graph-calender {
+  display: flex;
+  width: 100%;
+  height: 50%;
+  justify-content: space-between;
+  align-items: center;
+  border: 1px solid black;
+  gap: 2%;
+}

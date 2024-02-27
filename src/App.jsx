@@ -1,10 +1,10 @@
 import { Routes, Route } from "react-router-dom";
 import Layout from "./components/Layout";
 import Login from "./features/Auth/Login/Login";
-import Home from "./features/Auth/Home";
 // import RequestAuth from "./hooks/RequestAuth";
 import DashLayout from "./components/DashLayout/DashLayout";
 import PrefetchCntyCode from "./features/Auth/PrefetchCntyCode";
+import Dashboard from "./features/Auth/Dashboard/Dashboard";
 import "./App.css";
 
 function App() {
@@ -16,7 +16,7 @@ function App() {
         </Route>
 
         <Route path="dash" element={<DashLayout />}>
-          <Route index element={<Home />}></Route>
+          <Route index element={<Dashboard/>}></Route>
         </Route>
       </Route>
     </Routes>
